@@ -70,11 +70,11 @@
         }
         for(int i = 0; i < fCount; i++){
             if(follows[i].equals(name)){
-                fCount--;
                 for(int j = i; j < fCount - 1; j++){
                     follows[j] = follows[j + 1];               
                 }
                 follows[fCount - 1] = null;
+                fCount--;
                 return true;
             }
         }
@@ -85,7 +85,6 @@
     /*  Notice: This is the size of the intersection of the two follows lists. */
     public int countMutual(User other) {
          int mutual = 0;
-         String[] otherFollow = other.getfFollows();
          for(int i = 0; i < fCount; i++){
             if(other.follows(follows[i])){
                 mutual++;
@@ -99,7 +98,7 @@
     public boolean isFriendOf(User other) {
         return this.follows(other.getName()) && other.follows(this.name); 
     }
-    
+
     /** Returns this user's name, and the names that s/he follows. */
     public String toString() {
         String ans = name + " -> ";
