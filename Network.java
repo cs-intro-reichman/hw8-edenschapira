@@ -97,12 +97,13 @@ public class Network {
         if (userCount == 0) {
             return null;
         }
-        int maxFCount = -1;
+        int maxFollowers = -1;
         String mostPopular = null;
+
         for(int i = 0; i < userCount; i++){
             int currentFollowers = followeeCount(users[i].getName());
-            if(currentFollowers > maxFCount){
-                maxFCount = currentFollowers;
+            if(currentFollowers > maxFollowers){
+                maxFollowers = currentFollowers;
                 mostPopular = users[i].getName();
             }
         }
@@ -113,7 +114,7 @@ public class Network {
      *  the users in this network. Note: A name can appear 0 or 1 times in each list. */
     private int followeeCount(String name) {
         int counter = 0;
-         for(int i = 1; i < userCount; i++){
+         for(int i = 0; i < userCount; i++){
             if(users[i].follows(name)){
                 counter++;
             }
